@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NFTGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\NFTGeneratorData"
+    }
+  }
+}
