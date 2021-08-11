@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
+using NFTGenerator;
+
 using NFTInterface.Models;
 
 namespace NFTInterface.Controllers
@@ -20,9 +22,10 @@ namespace NFTInterface.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index(int tokenID)
+        public IActionResult Image(string token)
         {
-            return File(new byte[] { (byte)tokenID }, "text/text");
+            if (token is null || !int.TryParse(token, out var tokenID) || tokenID < 0 || tokenID > 1023) { return StatusCode(422); }
+            return File(Generator.Generate(tokenID), "image/png");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
