@@ -20,8 +20,10 @@ namespace NFTInterface.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string page)
         {
+            var index = page is null || !int.TryParse(page, out var i) ? 0 : i;
+            ViewData["pageIndex"] = index;
             return View();
         }
 

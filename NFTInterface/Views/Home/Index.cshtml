@@ -1,8 +1,31 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
+    var index = (int)ViewData["PageIndex"];
+    var pageSize = 8;
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if (index > 0)
+    {
+        <a href="/?page=@(index-1)">Previous Page</a>
+    }
+    @if (index > 0 && index < 1023)
+    {
+        @:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    }
+    @if (index < 1023)
+    {
+        <a href="/?page=@(index+1)">Next Page</a>
+    }
+    <br />
+
+    <div style="display:flex; flex-wrap: wrap;">
+        @for (var i = index * pageSize; i < (index * pageSize) + pageSize; i++)
+        {
+            <div style="display:flex; flex-direction: column;">
+                <p>Token @i</p>
+                <img src="/ghostnft/mint?token=@i&wallet=0x1681bcb589b3cfcf0c0616b0ce9b18b240643dc1" alt="Image Of Token @i" title="Token @i" style="margin-top: 3px; margin-left: 3px;" width=128 height=192 />
+            </div>
+        }
+    </div>
 </div>
