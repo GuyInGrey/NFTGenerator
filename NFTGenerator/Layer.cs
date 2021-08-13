@@ -10,7 +10,7 @@ namespace NFTGenerator
 {
     public class Layer
     {
-        public virtual void Apply(Image<Rgba32> image, Random random) { }
+        public virtual void Apply(Image<Rgba32> image, Random random, int token) { }
 
         public static Image<Rgba32> LoadImage(string name) => 
             Image.Load<Rgba32>(@"C:\NFTGeneratorData\" + name.Replace("/", @"\"));

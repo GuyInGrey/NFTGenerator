@@ -7,9 +7,9 @@ using SixLabors.ImageSharp.Processing;
 namespace NFTGenerator.Layers
 {
     [Priority(0)]
-    public class Card : Layer
+    public class Background : Layer
     {
-        public override void Apply(Image<Rgba32> image, Random rand)
+        public override void Apply(Image<Rgba32> image, Random rand, int token)
         {
             var backgrounds = LoadImages("backgrounds");
             var selected = backgrounds[rand.Next(backgrounds.Count)];

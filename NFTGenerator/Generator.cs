@@ -39,7 +39,7 @@ namespace NFTGenerator
 
             foreach (var l in LayerGenerators)
             {
-                l.Apply(i, r);
+                l.Apply(i, r, token);
             }
 
             using var m = new MemoryStream();
